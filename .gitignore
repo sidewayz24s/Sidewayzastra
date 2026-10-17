@@ -1,0 +1,10 @@
+node_modules/
+dist/
+.netlify/
+.env*
+!.env.example
+original/
+private-config/
+.ssr/
+coverage/
+*.log
