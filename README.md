@@ -8,8 +8,8 @@ Complete Netlify migration of the Sidewayz landing page and operations backend. 
 - 17 integration tests pass against Netlify's local PostgreSQL-compatible engine.
 - Netlify project created: `sidewayz-mobile-servicing`, site ID `ad6e78b0-e4d4-4326-b9be-7c522156685a`, team `info-qro-amu`.
 - Approved pricing and commercial-policy configuration were stored privately as production function variables.
-- GitHub installation is now configured and the migration branch `netlify-mobile-servicing` has been created. Netlify deployment is still pending repository connection and hosted verification.
-- Database migrations have been tested locally. A hosted database has **not** been provisioned or verified.
+- **Not deployed:** GitHub rejected branch creation with HTTP 403, `Resource not accessible by integration`.
+- Hosted PostgreSQL database provisioned; two migrations applied. Test enquiry 38632098 was independently verified with is_test=1. Both functions deployed; dispatch schedule registered.
 - CRM, customer message delivery, QuickBooks and Google Ads integrations are **not connected or verified**.
 - Real intake remains disabled. No customer enquiries were found in the original hosted database when checked; no records have been imported.
 
@@ -24,8 +24,8 @@ The database adapter uses PostgreSQL parameter binding, transactions, savepoints
 
 ## Deploy through GitHub
 
-1. Use the configured GitHub repository `sidewayz24s/Sidewayzastra` and migration branch `netlify-mobile-servicing`. GitHub app installation now provides the required write access.
-2. Commit this source to the authorised repository. Keep `.netlify`, `.env`, `original/`, `private-config/`, runtime data and credentials excluded. No private pricing matrix or actual business thresholds are included in source.
+1. Restore GitHub write permission for `sidewayz24s/Sidewayzastra` (or use a separately authorised private repository). The attempted branch name is `netlify-mobile-servicing`; its creation failed and must not be assumed to exist.
+2. Commit this source to the authorised repository. Keep `.netlify`, `.env`, `original/`, `private-config/`, runtime data and credentials excluded. No complete private pricing matrix or internal commercial thresholds are included in source. Approved public vehicle examples are on the landing page.
 3. In Netlify project `sidewayz-mobile-servicing`, connect that repository and the intended production branch. The existing `sidewayzastra` project uses a different repository and was left untouched.
 4. Build command: `npm run build`; publish directory: `dist`; functions directory: `netlify/functions`. Configuration is in `netlify.toml`. The `@netlify/database` dependency and committed SQL migrations allow supported Netlify deployment to provision the database and apply schema migrations.
 5. Verify the selected Netlify plan supports Database and check costs before changing the plan. No paid upgrade has been authorised or purchased.
@@ -49,7 +49,7 @@ Configure values with the Netlify UI/connector; never commit them. Function vari
 
 All secrets must be newly generated in a trusted credential manager. The single-key operations login is an initial access mechanism, not individual staff identity or a complete user audit system.
 
-The pricing matrix was preserved without changes. Public numeric prices remain withheld until customer-facing tax treatment is confirmed for this servicing offer. No insurance claims, fabricated Google reviews, same-day availability or unconditional refund guarantees have been added.
+The approved pricing matrix is unchanged. Owner confirmed no VAT registration, Mon–Sat 09:00–18:00, payment on completion and 24-hour cancellation notice. Public examples are vehicle-specific. An additional workmanship guarantee is DRAFT pending approval; customer intake remains disabled. See docs/LAUNCH_CHECKLIST.md for pending photos, Google reviews, broker clarification, integration and launch checks.
 
 ## External workflows
 
